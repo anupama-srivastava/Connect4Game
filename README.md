@@ -126,5 +126,77 @@ The game tracks:
 4. Add tests for new features
 5. Submit a pull request
 
+## 📁 Project Structure
+
+```
+Connect4Game/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/connect4/
+│   │   │       ├── Main.java                 # Application entry point
+│   │   │       ├── ai/
+│   │   │       │   └── MinimaxAI.java        # AI implementation with minimax algorithm
+│   │   │       ├── audio/
+│   │   │       │   └── AudioManager.java     # Sound effects and music management
+│   │   │       ├── controller/
+│   │   │       │   ├── GameController.java   # Standard game controller
+│   │   │       │   └── EnhancedGameController.java # Advanced features controller
+│   │   │       ├── model/
+│   │   │       │   ├── GameBoard.java        # Core game logic and board state
+│   │   │       │   └── GameState.java        # Game state management
+│   │   │       ├── multiplayer/
+│   │   │       │   └── MultiplayerManager.java # LAN/Online multiplayer handling
+│   │   │       ├── persistence/
+│   │   │       │   └── CloudSaveManager.java # Save/load game states
+│   │   │       ├── service/
+│   │   │       │   └── GameStateService.java # Game state business logic
+│   │   │       ├── settings/
+│   │   │       │   ├── GameSettings.java     # Basic game settings
+│   │   │       │   └── EnhancedSettings.java   # Advanced settings
+│   │   │       ├── statistics/
+│   │   │       │   └── GameStatistics.java   # Game analytics and tracking
+│   │   │       ├── themes/
+│   │   │       │   ├── ThemeManager.java     # Basic theme management
+│   │   │       │   └── EnhancedThemeManager.java # Advanced theme features
+│   │   │       └── util/
+│   │   │           ├── AnimationManager.java   # Basic animations
+│   │   │           └── EnhancedAnimationManager.java # Advanced animations
+│   │   └── resources/
+│   │       ├── css/
+│   │       │   └── styles.css                 # Application styling
+│   │       └── fxml/
+│   │           ├── GameView.fxml              # Standard game UI
+│   │           └── EnhancedGameView.fxml      # Enhanced game UI
+│   └── test/
+│       └── java/
+│           └── com/connect4/
+│               ├── TestRunner.java            # Test suite runner
+│               ├── ai/
+│               │   └── MinimaxAITest.java     # AI testing
+│               └── model/
+│                   └── GameBoardTest.java     # Game logic testing
+├── pom.xml                                   # Maven configuration
+├── README.md                                 # Project documentation
+├── .gitignore                               # Git ignore rules
+├── PHASE2_README.md                          # Phase 2 documentation
+└── TESTING_SUMMARY.md                       # Testing documentation
+```
+
+### Key Directories Explained
+
+- **`src/main/java/com/connect4/`**: Main application source code
+- **`ai/`**: Artificial intelligence implementation
+- **`controller/`**: MVC controllers handling user interactions
+- **`model/`**: Core game logic and data models
+- **`multiplayer/`**: Network multiplayer functionality
+- **`persistence/`**: Data persistence and cloud saves
+- **`service/`**: Business logic layer
+- **`settings/`**: Configuration and settings management
+- **`statistics/`**: Game analytics and tracking
+- **`themes/`**: UI theming and customization
+- **`util/`**: Utility classes and helper functions
+- **`resources/`**: UI assets (FXML, CSS, images)
+
 ## 📄 License
 This project is open source and available under the MIT License.
