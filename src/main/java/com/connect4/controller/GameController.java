@@ -129,3 +129,171 @@ public class GameController {
             for (int col = 0; col < GameBoard.COLS; col++) {
                 int piece = gameBoard.getPiece(row, col);
                 Color color = getPieceColor(piece);
+                circles[row][col].setFill(color);
+            }
+        }
+    }
+    
+    private Color getPieceColor(int piece) {
+        return switch (piece) {
+            case 1 -> Color.web("#e74c3c"); // Red for Player 1
+            case 2 -> Color.web("#f39c12"); // Yellow for Player 2
+            default -> Color.WHITE; // Empty
+        };
+    }
+    
+    private void updatePlayerTurnLabel() {
+        String player = gameBoard.getCurrentPlayer() == 1 ? "Player 1" : "Player 2";
+        playerTurnLabel.setText(player + "'s Turn");
+    }
+    
+    private void handleWin() {
+        String winner = gameBoard.getCurrentPlayer() == 1 ? "Player 1" : "Player 2";
+        
+        if (gameBoard.getCurrentPlayer() == 1) {
+            player1Score++;
+        } else {
+            player2Score++;
+        }
+        
+        updateScoreLabels();
+        
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game Over");
+        alert.setHeaderText(null);
+        alert.setContentText(winner + " wins!");
+        alert.showAndWait();
+        
+        resetGame();
+    }
+    
+    private void handleDraw() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game Over");
+        alert.setHeaderText(null);
+        alert.setContentText("It's a draw!");
+        alert.showAndWait();
+        
+        resetGame();
+    }
+    
+    private void updateScoreLabels() {
+        player1ScoreLabel.setText("Player 1: " + player1Score);
+        player2ScoreLabel.setText("Player 2: " + player2Score);
+    }
+    
+    @FXML
+    private void resetGame() {
+        gameBoard.reset();
+        updateBoardUI();
+        updatePlayerTurnLabel();
+        isAiTurn = false;
+    }
+    
+    @FXML
+    private void newGame() {
+        resetGame();
+        player1Score = 0;
+        player2Score = 0;
+        updateScoreLabels();
+    }
+    
+    private void handleGameModeChange() {
+        currentGameMode = gameModeComboBox.getValue();
+        resetGame();
+    }
+    
+    private void handleDifficultyChange() {
+        currentDifficulty = difficultyComboBox.getValue();
+        ai = new MinimaxAI(currentDifficulty);
+    }
+    
+    @FXML
+    private void saveGame() {
+        try {
+            TextInputDialog dialog = new TextInputDialog("game_save");
+            dialog.setTitle("Save Game");
+            dialog.setHeaderText("Save Current Game");
+            dialog.setContentText("Enter save name:");
+            
+            Optional<String> result = dialog.showAndWait();
+            result.ifPresent(filename -> {
+                gameStateService.saveGame(gameBoard, player1Score, player2Score, 
+                                        currentGameMode, currentDifficulty, filename);
+            });
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Failed to save game");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    private void loadGame() {
+        try {
+            List<String> savedGames = gameStateService.getSavedGames();
+            if (savedGames.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("No Saves");
+                alert.setHeaderText(null);
+                alert.setContentText("No saved games found.");
+                alert.showAndWait();
+                return;
+            }
+            
+            ChoiceDialog<String> dialog = new ChoiceDialog<>(savedGames.get(0), savedGames);
+            dialog.setTitle("Load Game");
+            dialog.setHeaderText("Load Saved Game");
+            dialog.setContentText("Choose a saved game:");
+            
+            Optional<String> result = dialog.showAndWait();
+            result.ifPresent(filename -> {
+                try {
+                    GameState gameState = gameStateService.loadGame(filename);
+                    gameBoard.setCurrentPlayer(gameState.getCurrentPlayer());
+                    
+                    // Restore board state
+                    int[][] board = gameState.getBoard();
+                    for (int row = 0; row < GameBoard.ROWS; row++) {
+                        for (int col = 0; col < GameBoard.COLS; col++) {
+                            gameBoard.getBoard()[row][col] = board[row][col];
+                        }
+                    }
+                    
+                    player1Score = gameState.getPlayer1Score();
+                    player2Score = gameState.getPlayer2Score();
+                    currentGameMode = gameState.getGameMode();
+                    currentDifficulty = gameState.getDifficulty();
+                    
+                    updateBoardUI();
+                    updateScoreLabels();
+                    updatePlayerTurnLabel();
+                    
+                } catch (Exception e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Failed to load game");
+                    alert.setContentText(e.getMessage());
+                    alert.showAndWait();
+                }
+            });
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Failed to load saved games");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    private void undoMove() {
+        // This would require implementing move history
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Undo Move");
+        alert.setHeaderText(null);
+        alert.setContentText("Undo functionality not yet implemented.");
+        alert.showAndWait();
+    }

@@ -204,12 +204,11 @@ class MinimaxAITest {
     
     // Helper method to setup board from array
     private void setupBoard(int[][] boardSetup) {
-        for (int row = 0; row < GameBoard.ROWS; row++) {
-            for (int col = 0; col < GameBoard.COLS; col++) {
+        for (int col = 0; col < GameBoard.COLS; col++) {
+            for (int row = GameBoard.ROWS - 1; row >= 0; row--) {
                 if (boardSetup[row][col] != 0) {
-                    // Simulate the board state
-                    // This is a simplified version - in real tests, you'd need to properly set up
-                    // the board state through the gameBoard methods
+                    gameBoard.setCurrentPlayer(boardSetup[row][col]);
+                    gameBoard.dropPiece(col);
                 }
             }
         }

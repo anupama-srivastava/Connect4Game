@@ -8,6 +8,7 @@ import org.junit.platform.launcher.LauncherDiscoveryRequest;
 import org.junit.platform.launcher.core.LauncherFactory;
 import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
 import org.junit.platform.launcher.listeners.TestExecutionSummary;
+import org.junit.platform.launcher.LauncherDiscoveryRequestBuilder;
 
 import static org.junit.platform.engine.discovery.DiscoverySelectors.selectClass;
 

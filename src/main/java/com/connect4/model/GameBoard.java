@@ -128,4 +128,10 @@ public class GameBoard {
         initializeBoard();
         currentPlayer = 1;
     }
+    
+    public void setCurrentPlayer(int player) {
+        if (player == 1 || player == 2) {
+            this.currentPlayer = player;
+        }
+    }
 }
