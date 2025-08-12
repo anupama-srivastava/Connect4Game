@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.connect4.controller.GameController"
+      spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 20;">
+    
+    <Label text="Connect4 Game" style="-fx-font-size: 32; -fx-font-weight: bold; 
+           -fx-text-fill: white; -fx-alignment: center;"/>
+    
+    <HBox spacing="20" alignment="center">
+        <Label fx:id="playerTurnLabel" style="-fx-font-size: 18; -fx-text-fill: white;"/>
+    </HBox>
+    
+    <HBox spacing="40" alignment="center">
+        <Label fx:id="player1ScoreLabel" text="Player 1: 0" 
+               style="-fx-font-size: 16; -fx-text-fill: #e74c3c; -fx-font-weight: bold;"/>
+        <Label fx:id="player2ScoreLabel" text="Player 2: 0" 
+               style="-fx-font-size: 16; -fx-text-fill: #f39c12; -fx-font-weight: bold;"/>
+    </HBox>
+    
+    <GridPane fx:id="gameGrid" alignment="center" 
+              style="-fx-background-color: #34495e; -fx-padding: 10; 
+                     -fx-border-color: #7f8c8d; -fx-border-width: 2;"/>
+    
+    <HBox spacing="20" alignment="center">
+        <Button fx:id="resetButton" text="Reset Game" onAction="#resetGame"
+                style="-fx-font-size: 14; -fx-background-color: #3498db; 
+                       -fx-text-fill: white; -fx-padding: 10 20;"/>
+        <Button fx:id="newGameButton" text="New Game" onAction="#newGame"
+                style="-fx-font-size: 14; -fx-background-color: #27ae60; 
+                       -fx-text-fill: white; -fx-padding: 10 20;"/>
+    </HBox>
+</VBox>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.paint.*?>
+<?import com.connect4.themes.EnhancedThemeManager?>
+<?import com.connect4.settings.EnhancedSettings?>
+<?import com.connect4.multiplayer.MultiplayerManager?>
+
+<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.connect4.controller.EnhancedGameController"
+      spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 20;">
+    
+    <Label text="Connect4 Game" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: white; -fx-alignment: center;"/>
+    
+    <HBox spacing="20" alignment="center">
+        <Label fx:id="playerTurnLabel" style="-fx-font-size: 18; -fx-text-fill: white;"/>
+    </HBox>
+    
+    <HBox spacing="40" alignment="center">
+        <Label fx:id="player1ScoreLabel" text="Player 1: 0" 
+               style="-fx-font-size: 16; -fx-text-fill: #e74c3c; -fx-font-weight: bold;"/>
+        <Label fx:id="player2ScoreLabel" text="Player 2: 0" 
+               style="-fx-font-size: 16; -fx-text-fill: #f39c12; -fx-font-weight: bold;"/>
+    </HBox>
+    
+    <HBox spacing="40" alignment="center">
+        <Label fx:id="gameModeLabel" text="Human vs Human" 
+               style="-fx-font-size: 16; -fx-text-fill: white;"/>
+        <Label fx:id="difficultyLabel" text="Medium" 
+               style="-fx-font-size: 16; -fx-text-fill: white;"/>
+    </HBox>
+    
+    <GridPane fx:id="gameGrid" alignment="center" 
+              style="-fx-background-color: #34495e; -fx-padding: 10; 
+                     -fx-border-color: #7f8c8d; -fx-border-width: 2;"/>
+    
+    <HBox spacing="20" alignment="center">
+        <Button fx:id="resetButton" text="Reset Game" onAction="#resetGame"
+                style="-fx-font-size: 14; -fx-background-color: #3498db; 
+                       -fx-text-fill: white; -fx-padding: 10 20;"/>
+        <Button fx:id="newGameButton" text="New Game" onAction="#newGame"
+                style="-fx-font-size: 14; -fx-background-color: #27ae60; 
+                       -fx-text-fill: white; -fx-padding: 10 20;"/>
+        <Button fx:id="settingsButton" text="Settings" onAction="#openSettings"
+                style="-fx-font-size: 14; -fx-background-color: #f39c12; 
+                       -fx-text-fill: white; -fx-padding: 10 20;"/>
+        <Button fx:id="statisticsButton" text="Statistics" onAction="#showStatistics"
+                style="-fx-font-size: 14; -fx-background-color: #e74c3c; 
+                       -fx-text-fill: white; -fx-padding: 10 20;"/>
+    </HBox>
+    
+    <VBox spacing="20" alignment="center">
+        <Label text="Game Statistics" style="-fx-font-size: 16; -fx-text-fill: white;"/>
+        <ProgressBar fx:id="player1Progress" progress="0.0"/>
+        <ProgressBar fx:id="player2Progress" progress="0.0"/>
+    </VBox>
+    
+    <VBox spacing="20" alignment="center">
+        <Label text="Multiplayer" style="-fx-font-size: 16; -fx-text-fill: white;"/>
+        <TitledPane fx:id="multiplayerPanel" text="Multiplayer">
+            <VBox spacing="10">
+                <Label text="Multiplayer Settings"/>
+                <Button text="Start Multiplayer Game" onAction="#startMultiplayerGame"/>
+            </VBox>
+        </TitledPane>
+    </VBox>
+    
+    <VBox spacing="20" alignment="center">
+        <Label text="Settings" style="-fx-font-size: 16; -fx-text-fill: white;"/>
+        <TitledPane fx:id="settingsPanel" text="Settings">
+            <VBox spacing="10">
+                <Label text="Settings"/>
+                <Button text="Open Settings" onAction="#openSettings"/>
+            </VBox>
+    </VBox>
+    
+    <VBox spacing="20" alignment="center">
+        <Label text="Statistics" style="-fx-font-size: 16; -fx-text-fill: white;"/>
+        <TitledPane fx:id="statisticsPanel" text="Statistics">
+            <VBox spacing="10">
+                <Label text="Statistics"/>
+                <Button text="Show Statistics" onAction="#showStatistics"/>
+            </VBox>
+    </VBox>
+    
+    <VBox spacing="20" alignment="center">
+        <Label text="Multiplayer" style="-fx-font-size: 16; -fx-text-fill: white;"/>
+        <TitledPane fx:id="multiplayerPanel" text="Multiplayer">
+            <VBox spacing="10">
+                <Label text="Multiplayer Settings"/>
+                <ButtonNext, I will create the enhanced FXML UI layout file for the updated game controller with Phase 2 features:
+
+<create_file>
+<path>Connect4Game/src/main/resources/fxml/EnhancedGameView.fxml</path>
+<content>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.connect4.controller.EnhancedGameController"
+      spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 20;">
+    
+    <Label text="Connect4 Game - Enhanced" style="-fx-font-size: 32; -fx-font-weight: bold; 
+           -fx-text-fill: white; -fx-alignment: center;"/>
+    
+    <HBox spacing="20" alignment="center">
+        <Label fx:id="playerTurnLabel" style="-fx-font-size: 18; -fx-text-fill: white;"/>
+        <Label fx:id="gameModeLabel" style="-fx-font-size: 16; -fx-text-fill: #ecf0f1;"/>
+        <Label fx:id="difficultyLabel" style="-fx-font-size: 16; -fx-text-fill: #ecf0f1;"/>
+    </HBox>
+    
+    <HBox spacing="40" alignment="center">
+        <Label fx:id="player1ScoreLabel" text="Player 1: 0" 
+               style="-fx-font-size: 16; -fx-text-fill: #e74c3c; -fx-font-weight: bold;"/>
+        <Label fx:id="player2ScoreLabel" text="Player 2: 0" 
+               style="-fx-font-size: 16; -fx-text-fill: #f39c12; -fx-font-weight: bold;"/>
+    </HBox>
+    
+    <GridPane fx:id="gameGrid" alignment="center" 
+              style="-fx-background-color: #34495e; -fx-padding: 10; 
+                     -fx-border-color: #7f8c8d; -fx-border-width: 2;"/>
+    
+    <HBox spacing="20" alignment="center">
+        <Button fx:id="resetButton" text="Reset Game" 
+                style="-fx-font-size: 14; -fx-background-color: #3498db; 
+                       -fx-text-fill: white; -fx-padding: 10 20;"/>
+        <Button fx:id="newGameButton" text="New Game" 
+                style="-fx-font-size: 14; -fx-background-color: #27ae60; 
+                       -fx-text-fill: white; -fx-padding: 10 20;"/>
+        <Button fx:id="settingsButton" text="Settings" 
+                style="-fx-font-size: 14; -fx-background-color: #9b59b6; 
+                       -fx-text-fill: white; -fx-padding: 10 20;"/>
+        <Button fx:id="statisticsButton" text="Statistics" 
+                style="-fx-font-size: 14; -fx-background-color: #e67e22; 
+                       -fx-text-fill: white; -fx-padding: 10 20;"/>
+    </HBox>
+    
+    <HBox spacing="20" alignment="center">
+        <Label text="Theme:" style="-fx-text-fill: white;"/>
+        <ComboBox fx:id="themeComboBox" prefWidth="150"/>
+    </HBox>
+    
+    <VBox fx:id="statisticsPanel" spacing="10" style="-fx-background-color: #1c2833; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;" visible="false">
+        <!-- Statistics content will be dynamically added here -->
+    </VBox>
+    
+    <TitledPane fx:id="multiplayerPanel" text="Multiplayer" expanded="false" style="-fx-text-fill: white;">
+        <!-- Multiplayer lobby and controls will be added here -->
+    </TitledPane>
+    
+</VBox>
