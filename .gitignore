@@ -31,6 +31,13 @@ hs_err_pid*
 *.ipr
 *.iws
 .vscode/
+*.classpath
+*.project
+*.settings/
+.metadata/
+bin/
+.recommenders/
+*.pydevproject
 .DS_Store
 Thumbs.db
 *.swp
@@ -55,3 +62,28 @@ build/
 dist/
 out/
 target/
+
+# JavaFX specific
+*.jnilib
+*.dylib
+*.so
+*.dll
+
+# Application specific
+config.properties
+user-preferences.json
+game-statistics.json
+save-games/
+screenshots/
+recordings/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+*.rej
+*~
+.#*
+.fuse_hidden*
